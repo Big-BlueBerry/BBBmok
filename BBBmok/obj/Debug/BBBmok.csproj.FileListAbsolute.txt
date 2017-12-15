@@ -1,0 +1,9 @@
+D:\dev\BBB project\BBBmok\BBBmok\bin\Debug\BBBmok.exe.config
+D:\dev\BBB project\BBBmok\BBBmok\bin\Debug\BBBmok.exe
+D:\dev\BBB project\BBBmok\BBBmok\bin\Debug\BBBmok.pdb
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.Form1.resources
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.Properties.Resources.resources
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.csproj.GenerateResource.Cache
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.csproj.CoreCompileInputs.cache
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.exe
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.pdb
