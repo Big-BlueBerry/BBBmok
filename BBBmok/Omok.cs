@@ -51,6 +51,7 @@ namespace BBBmok
                 if (cnt >= 5) return tempp;
             }
             #endregion
+
             #region Vertical
             cnt = 0;
             for (int j = basey; j <= y + 4; j++)

@@ -1,9 +1,6 @@
 D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
-D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\ko\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
-D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\ko\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
-D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
 D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\UnitTestProject1.dll
 D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
 D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\BBBmok.exe

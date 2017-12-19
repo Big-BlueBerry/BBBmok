@@ -7,3 +7,4 @@ D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.csproj.GenerateResource.Cache
 D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.csproj.CoreCompileInputs.cache
 D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.exe
 D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.pdb
+D:\dev\BBB project\BBBmok\BBBmok\obj\Debug\BBBmok.csprojResolveAssemblyReference.cache
