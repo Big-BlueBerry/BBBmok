@@ -12,8 +12,9 @@ namespace BBBmok
 {
     public partial class Form1 : Form
     {
-        Graphics GBoard;
-        Graphics GMouse;
+        Graphics GBoard;    //보드 그릴거
+        Graphics GMouse;    //커서 그릴거
+
         Omok game;
         Dictionary<int, Brush> _pColor;
         int _x, _y;
@@ -86,10 +87,16 @@ namespace BBBmok
             }
         }
 
-        private void PaintMousecursor(int x, int y)
+        /// <summary>
+        /// 마우스 커서도 그리기
+        /// </summary>
+        /// <param name="gx">게임판상 좌표 x</param>
+        /// <param name="gy">게임판상 좌표 y</param>
+        private void PaintMousecursor(int gx, int gy)
         {
-
+            GBoard.DrawRectangle(Pens.DarkCyan, new Rectangle(new Point((gx - 1) * 30 + 16, (gy - 1) * 30 + 16), new Size(28, 28)));
         }
+
         /// <summary>
         /// 실제 게임판의 좌표를 가져옵니다.
         /// </summary>
