@@ -22,7 +22,6 @@ namespace BBBmok
         {
             _x = 0; _y = 0;
             
-
             _pColor = new Dictionary<int, Brush>();
             _pColor.Add(1, Brushes.Black);
             _pColor.Add(-1, Brushes.White);
@@ -46,17 +45,17 @@ namespace BBBmok
                 e.Graphics.DrawLine(Pens.Black, new Point(31, 30 + i * 30), new Point(450, 30 + i * 30));
                 e.Graphics.DrawLine(Pens.Black, new Point(30 + i * 30, 31), new Point(30 + i * 30, 450));
             }
-            
+
             // 지금까지 놓은 돌 그리기
-            for (int i = 1; i < 15; i++)
+            for (int i = 1; i <= 15; i++)
             {
-                for (int j = 1; j < 15; j++)
+                for (int j = 1; j <= 15; j++)
                 {
                     if (game.map[i, j] != 0)
                     {
-                        e.Graphics.FillEllipse(_pColor[game.player],
-                            new Rectangle(new Point((_x - 1) * 30 + 16,
-                            (_y - 1) * 30 + 16), new Size(28, 28)));
+                        e.Graphics.FillEllipse(_pColor[game.map[i, j]],
+                            new Rectangle(new Point((i - 1) * 30 + 16,
+                            (j - 1) * 30 + 16), new Size(28, 28)));
                     }
                 }
             }
@@ -96,6 +95,7 @@ namespace BBBmok
             if ((newx > 0 && newy > 0 && newx <= 15 && newy <= 15) && (newx != _x || newy != _y))
             {
                 _x = newx; _y = newy;
+                Invalidate();
             }
         }
 
@@ -107,7 +107,7 @@ namespace BBBmok
         {
             int mousex = MousePosition.X - Location.X;
             int mousey = MousePosition.Y - Location.Y;
-            if (!(23 < mousex && mousex < 465 && 47 < mousey && mousey < 500)) return (0, 0);
+            if (!(23 < mousex && mousex < 470 && 47 < mousey && mousey < 500)) return (0, 0);
 
             int x = (mousex - 23) % 30 == 0 ? 0 : (mousex - 23) / 30 + 1;
             int y = (mousey - 47) % 30 == 0 ? 0 : (mousey - 47) / 30 + 1;
