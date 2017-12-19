@@ -14,3 +14,5 @@ D:\dev\BBB project\BBBmok\UnitTestProject1\obj\Debug\UnitTestProject1.csprojReso
 D:\dev\BBB project\BBBmok\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CoreCompileInputs.cache
 D:\dev\BBB project\BBBmok\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 D:\dev\BBB project\BBBmok\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\System.ValueTuple.dll
+D:\dev\BBB project\BBBmok\UnitTestProject1\bin\Debug\System.ValueTuple.xml

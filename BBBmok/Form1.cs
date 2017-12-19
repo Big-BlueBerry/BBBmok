@@ -12,14 +12,17 @@ namespace BBBmok
 {
     public partial class Form1 : Form
     {
-        Graphics g;
+        Graphics GBoard;
+        Graphics GMouse;
         Omok game;
         Dictionary<int, Brush> _pColor;
+        
 
         public Form1()
         {
-            g = this.CreateGraphics();
-            
+            GBoard = this.CreateGraphics();
+            GMouse = this.CreateGraphics();
+
             _pColor = new Dictionary<int, Brush>();
             _pColor.Add(1, Brushes.Black);
             _pColor.Add(-1, Brushes.White);
@@ -45,12 +48,10 @@ namespace BBBmok
 
         private void Form1_Click(object sender, MouseEventArgs e)
         {
-            int mousex = MousePosition.X - Location.X;
-            int mousey = MousePosition.Y - Location.Y;
-            if (!(23 < mousex && mousex < 465 && 47 < mousey && mousey < 465)) return;
+            var location = MakeBoardXY();
+            int x = location.Item1;
+            int y = location.Item2;
 
-            int x = (mousex - 23) % 30 == 0 ? 0 : (mousex - 23) / 30 + 1;
-            int y = (mousey - 47) % 30 == 0 ? 0 : (mousey - 47) / 30 + 1;
             if (x == 0 || y == 0) return;
 
             int nowPlayer = game.AddStone(x, y);
@@ -66,7 +67,32 @@ namespace BBBmok
 
         private void PaintStone(int x, int y, int player)
         {
-            g.FillEllipse(_pColor[player], new Rectangle(new Point((x - 1) * 30+16, (y - 1) * 30+16), new Size(28, 28)));
+            GBoard.FillEllipse(_pColor[player], new Rectangle(new Point((x - 1) * 30 + 16, (y - 1) * 30 + 16), new Size(28, 28)));
+        }
+
+        
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            var location = MakeBoardXY();
+            int x = location.Item1;
+            int y = location.Item2;
+
+        }
+
+        /// <summary>
+        /// 실제 게임판의 좌표를 가져옵니다.
+        /// </summary>
+        /// <returns>Return (x, y)</returns>
+        private (int, int) MakeBoardXY()
+        {
+            int mousex = MousePosition.X - Location.X;
+            int mousey = MousePosition.Y - Location.Y;
+            if (!(23 < mousex && mousex < 465 && 47 < mousey && mousey < 465)) return (0, 0);
+
+            int x = (mousex - 23) % 30 == 0 ? 0 : (mousex - 23) / 30 + 1;
+            int y = (mousey - 47) % 30 == 0 ? 0 : (mousey - 47) / 30 + 1;
+
+            return (x, y);
         }
     }
 }
