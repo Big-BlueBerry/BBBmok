@@ -55,7 +55,7 @@ namespace BBBmok
 
             int nowPlayer = game.AddStone(x, y);
             if (nowPlayer != 0) PaintStone(x, y, nowPlayer);
-            int winner = game.Check(x, y) < 0 ? 2 : game.Check(x, y);   //과연 알아볼수 있을까...
+            int winner = game.Check(x, y);
             if (winner != 0) MessageBox.Show("Player" + winner + "이 이겼습니다!");
         }
 
