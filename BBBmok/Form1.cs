@@ -23,8 +23,12 @@ namespace BBBmok
         public Form1()
         {
             _x = 0; _y = 0;
+
             GBoard = this.CreateGraphics();
+            GBoard.Clip = new Region(new Rectangle(0, 0, 3000,3000));
+
             GMouse = this.CreateGraphics();
+            GMouse.Clip = new Region(new Rectangle(0, 0, 3000,3000));
 
             _pColor = new Dictionary<int, Brush>();
             _pColor.Add(1, Brushes.Black);
@@ -79,11 +83,11 @@ namespace BBBmok
             var location = MakeBoardXY();
             int newx = location.Item1;
             int newy = location.Item2;
-            
-            if(newx!=_x||newy!=_y)
+
+            if (newx != _x || newy != _y && (newx > 0 && newy > 0 && newx <= 15 && newy <= 15))
             {
                 PaintMousecursor(newx, newy);
-                _x=newx;_y = newy;
+                _x = newx; _y = newy;
             }
         }
 
