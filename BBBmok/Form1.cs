@@ -16,10 +16,12 @@ namespace BBBmok
         Graphics GMouse;
         Omok game;
         Dictionary<int, Brush> _pColor;
+        int _x, _y;
         
 
         public Form1()
         {
+            _x = 0; _y = 0;
             GBoard = this.CreateGraphics();
             GMouse = this.CreateGraphics();
 
@@ -29,6 +31,7 @@ namespace BBBmok
             game = new Omok();
             InitializeComponent();
             game.AddStone(8, 8);
+            game.Check(8, 8);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,19 +47,18 @@ namespace BBBmok
                 e.Graphics.DrawLine(Pens.Black, new Point(31, 30 + i * 30), new Point(450, 30 + i * 30));
                 e.Graphics.DrawLine(Pens.Black, new Point(30 + i * 30, 31), new Point(30 + i * 30, 450));
             }
+
+            // 초수 천원
+            PaintStone(8, 8, 1);
         }
 
         private void Form1_Click(object sender, MouseEventArgs e)
         {
-            var location = MakeBoardXY();
-            int x = location.Item1;
-            int y = location.Item2;
+            if (_x == 0 || _y == 0) return;
 
-            if (x == 0 || y == 0) return;
-
-            int nowPlayer = game.AddStone(x, y);
-            if (nowPlayer != 0) PaintStone(x, y, nowPlayer);
-            int winner = game.Check(x, y);
+            int nowPlayer = game.AddStone(_x, _y);
+            if (nowPlayer != 0) PaintStone(_x, _y, nowPlayer);
+            int winner = game.Check(_x, _y);
             if (winner != 0)
             {
                 if (winner == 1) MessageBox.Show("Player 1 이 이겼습니다!");
@@ -74,11 +76,20 @@ namespace BBBmok
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             var location = MakeBoardXY();
-            int x = location.Item1;
-            int y = location.Item2;
-
+            int newx = location.Item1;
+            int newy = location.Item2;
+            
+            if(newx!=_x||newy!=_y)
+            {
+                PaintMousecursor(newx, newy);
+                _x=newx;_y = newy;
+            }
         }
 
+        private void PaintMousecursor(int x, int y)
+        {
+
+        }
         /// <summary>
         /// 실제 게임판의 좌표를 가져옵니다.
         /// </summary>
