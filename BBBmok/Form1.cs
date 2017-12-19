@@ -12,8 +12,6 @@ namespace BBBmok
 {
     public partial class Form1 : Form
     {
-        Graphics GBoard;    //보드 그릴거
-        Graphics GMouse;    //커서 그릴거
 
         Omok game;
         Dictionary<int, Brush> _pColor;
@@ -23,12 +21,7 @@ namespace BBBmok
         public Form1()
         {
             _x = 0; _y = 0;
-
-            GBoard = this.CreateGraphics();
-            GBoard.Clip = new Region(new Rectangle(0, 0, 3000,3000));
-
-            GMouse = this.CreateGraphics();
-            GMouse.Clip = new Region(new Rectangle(0, 0, 3000,3000));
+            
 
             _pColor = new Dictionary<int, Brush>();
             _pColor.Add(1, Brushes.Black);
@@ -46,23 +39,42 @@ namespace BBBmok
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            // 판 그리기
             e.Graphics.FillRectangle(Brushes.BurlyWood, new Rectangle(30, 30, 420, 420));
             for (int i = 0; i < 15; i++)
             {
                 e.Graphics.DrawLine(Pens.Black, new Point(31, 30 + i * 30), new Point(450, 30 + i * 30));
                 e.Graphics.DrawLine(Pens.Black, new Point(30 + i * 30, 31), new Point(30 + i * 30, 450));
             }
+            
+            // 지금까지 놓은 돌 그리기
+            for (int i = 1; i < 15; i++)
+            {
+                for (int j = 1; j < 15; j++)
+                {
+                    if (game.map[i, j] != 0)
+                    {
+                        e.Graphics.FillEllipse(_pColor[game.player],
+                            new Rectangle(new Point((_x - 1) * 30 + 16,
+                            (_y - 1) * 30 + 16), new Size(28, 28)));
+                    }
+                }
+            }
 
-            // 초수 천원
-            PaintStone(8, 8, 1);
+            // 마우스 커서 그리기
+            e.Graphics.DrawRectangle(Pens.DarkCyan,
+                new Rectangle(new Point((_x - 1) * 30 + 16, (_y - 1) * 30 + 16),
+                new Size(28, 28)));
+
+
         }
 
         private void Form1_Click(object sender, MouseEventArgs e)
         {
             if (_x == 0 || _y == 0) return;
 
-            int nowPlayer = game.AddStone(_x, _y);
-            if (nowPlayer != 0) PaintStone(_x, _y, nowPlayer);
+            if (!game.AddStone(_x, _y)) return;
+            Invalidate();
             int winner = game.Check(_x, _y);
             if (winner != 0)
             {
@@ -70,12 +82,9 @@ namespace BBBmok
                 if (winner == -1) MessageBox.Show("Player 2 가 이겼습니다!");
                 Application.Exit();
             }
+            
         }
-
-        private void PaintStone(int x, int y, int player)
-        {
-            GBoard.FillEllipse(_pColor[player], new Rectangle(new Point((x - 1) * 30 + 16, (y - 1) * 30 + 16), new Size(28, 28)));
-        }
+        
 
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -86,19 +95,8 @@ namespace BBBmok
 
             if ((newx > 0 && newy > 0 && newx <= 15 && newy <= 15) && (newx != _x || newy != _y))
             {
-                PaintMousecursor(newx, newy);
                 _x = newx; _y = newy;
             }
-        }
-
-        /// <summary>
-        /// 마우스 커서도 그리기
-        /// </summary>
-        /// <param name="gx">게임판상 좌표 x</param>
-        /// <param name="gy">게임판상 좌표 y</param>
-        private void PaintMousecursor(int gx, int gy)
-        {
-            GBoard.DrawRectangle(Pens.DarkCyan, new Rectangle(new Point((gx - 1) * 30 + 16, (gy - 1) * 30 + 16), new Size(28, 28)));
         }
 
         /// <summary>
@@ -109,7 +107,7 @@ namespace BBBmok
         {
             int mousex = MousePosition.X - Location.X;
             int mousey = MousePosition.Y - Location.Y;
-            if (!(23 < mousex && mousex < 465 && 47 < mousey && mousey < 465)) return (0, 0);
+            if (!(23 < mousex && mousex < 465 && 47 < mousey && mousey < 500)) return (0, 0);
 
             int x = (mousex - 23) % 30 == 0 ? 0 : (mousex - 23) / 30 + 1;
             int y = (mousey - 47) % 30 == 0 ? 0 : (mousey - 47) / 30 + 1;

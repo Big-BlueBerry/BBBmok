@@ -12,7 +12,7 @@ namespace UnitTestProject1
         {
             Omok game=new Omok();
             game.AddStone(1, 1);
-            int result = game.AddStone(1, 1);
+            bool result = game.AddStone(1, 1);
             Assert.AreEqual(0, result);
         }
 

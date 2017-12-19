@@ -8,8 +8,12 @@ namespace BBBmok
 {
     public class Omok
     {
-        private int player;
-        private int[,] map;
+        public int player;
+
+        /// <summary> 
+        /// 1-based array
+        /// </summary>
+        public int[,] map;
 
         public Omok()
         {
@@ -20,13 +24,13 @@ namespace BBBmok
         /// <summary>
         /// 돌을 놓는다. 실패 시 0, 성공시 플레이어를 반환한다.
         /// </summary>
-        public int AddStone(int x, int y)
+        public bool AddStone(int x, int y)
         {
-            if (map[x, y] != 0) return 0;
+            if (map[x, y] != 0) return false;
 
             map[x, y] = player;
             
-            return player;
+            return true;
         }
 
         /// <summary>
