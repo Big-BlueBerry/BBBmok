@@ -64,6 +64,7 @@ namespace BBBmok
             e.Graphics.DrawRectangle(Pens.DarkCyan,
                 new Rectangle(new Point((_x - 1) * 30 + 16, (_y - 1) * 30 + 16),
                 new Size(28, 28)));
+            
 
 
         }
