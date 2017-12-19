@@ -60,12 +60,24 @@ namespace BBBmok
                 }
             }
 
+            Pen pen = new Pen(Brushes.DarkCyan, 5);
             // 마우스 커서 그리기
-            e.Graphics.DrawRectangle(Pens.DarkCyan,
+            e.Graphics.DrawRectangle(new Pen(Brushes.DarkCyan, 3),
                 new Rectangle(new Point((_x - 1) * 30 + 16, (_y - 1) * 30 + 16),
                 new Size(28, 28)));
-            
+            e.Graphics.DrawLine(pen,
+                new Point((_x - 1) * 30 + 30, 0),
+                new Point((_x - 1) * 30 + 30, (_y - 1) * 30 + 15));
+            e.Graphics.DrawLine(pen,
+                new Point((_x - 1) * 30 + 30, (_y - 1) * 30 + 45),
+                new Point((_x - 1) * 30 + 30, 500));
 
+            e.Graphics.DrawLine(pen,
+                new Point(0, (_y - 1) * 30 + 30),
+                new Point((_x - 1) * 30 + 15, (_y - 1) * 30 + 30));
+            e.Graphics.DrawLine(pen,
+                new Point((_x - 1) * 30 + 45, (_y - 1) * 30 + 30),
+                new Point(500, (_y - 1) * 30 + 30));
 
         }
 
