@@ -77,14 +77,14 @@ namespace BBBmok
             GBoard.FillEllipse(_pColor[player], new Rectangle(new Point((x - 1) * 30 + 16, (y - 1) * 30 + 16), new Size(28, 28)));
         }
 
-        
+
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             var location = MakeBoardXY();
             int newx = location.Item1;
             int newy = location.Item2;
 
-            if (newx != _x || newy != _y && (newx > 0 && newy > 0 && newx <= 15 && newy <= 15))
+            if ((newx > 0 && newy > 0 && newx <= 15 && newy <= 15) && (newx != _x || newy != _y))
             {
                 PaintMousecursor(newx, newy);
                 _x = newx; _y = newy;
