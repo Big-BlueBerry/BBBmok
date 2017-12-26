@@ -65,6 +65,7 @@ namespace BBBmok
             e.Graphics.DrawRectangle(new Pen(Brushes.DarkCyan, 3),
                 new Rectangle(new Point((_x - 1) * 30 + 16, (_y - 1) * 30 + 16),
                 new Size(28, 28)));
+
             e.Graphics.DrawLine(pen,
                 new Point((_x - 1) * 30 + 30, 0),
                 new Point((_x - 1) * 30 + 30, (_y - 1) * 30 + 15));
@@ -108,7 +109,8 @@ namespace BBBmok
             if ((newx > 0 && newy > 0 && newx <= 15 && newy <= 15) && (newx != _x || newy != _y))
             {
                 _x = newx; _y = newy;
-                Invalidate();
+                Invalidate(new Region(new Rectangle(new Point((_x - 1) * 30 - 15, 0), new Size(90, 450))));
+                Invalidate(new Region(new Rectangle(new Point(0, (_y - 1) * 30 - 15), new Size(450, 90))));
             }
         }
 
